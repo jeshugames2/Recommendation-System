@@ -97,6 +97,13 @@ class Window(QtWidgets.QWidget):
                         self.le.setText(j)
                         break
     
+    def refresh(self):
+        self.la.setText("Enter Customer Name:")
+        self.lc.clear()
+        self.le.clear()
+        self.te.clear()
+        
+    
     def window(self):
         self.la = QtWidgets.QLabel()
         self.la.setText("Enter Customer Name:")
@@ -108,26 +115,25 @@ class Window(QtWidgets.QWidget):
         self.ld = QtWidgets.QLabel()
         self.ld.setText("Types:")
         self.le = QtWidgets.QLabel()
+        self.b2 = QtWidgets.QPushButton("Refresh")
             
         
         v_box = QtWidgets.QVBoxLayout()
         v_box.addWidget(self.la)
         v_box.addWidget(self.te)
         v_box.addWidget(self.b1)
+        v_box.addWidget(self.b2)
         v_box.addWidget(self.lb)
         v_box.addWidget(self.lc)
         v_box.addWidget(self.ld)
         v_box.addWidget(self.le)
         
         self.setLayout(v_box)
-        
         self.b1.clicked.connect(self.btn_click)
+        self.b2.clicked.connect(self.refresh)        
+        self.setWindowTitle("Recommendation System")        
+        self.show()          
         
-        self.setWindowTitle("Recommendation System")
-        
-        self.show()
-          
-    
 app = QtWidgets.QApplication(sys.argv)
 a_window = Window()
 sys.exit(app.exec_())
